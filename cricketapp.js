@@ -1,300 +1,230 @@
-var bat1 = 0;
-var userscore = 0;
-var computerscore = 0;
-var batting = document.getElementById("bat");
-var bowling = document.getElementById("bowl");
-var result = document.getElementById("result");
-var one = document.getElementById("one");
-var two = document.getElementById("two");
-var three = document.getElementById("three");
-var four = document.getElementById("four");
-var five = document.getElementById("five");
-var six = document.getElementById("six");
+var batone = document.getElementById("batone");
+var battwo = document.getElementById("battwo");
+var batthree = document.getElementById("batthree");
+var batfour = document.getElementById("batfour");
+var batfive = document.getElementById("batfive");
+var batsix = document.getElementById("batsix");
 var bowlone = document.getElementById("bowlone");
 var bowltwo = document.getElementById("bowltwo");
 var bowlthree = document.getElementById("bowlthree");
 var bowlfour = document.getElementById("bowlfour");
 var bowlfive = document.getElementById("bowlfive");
 var bowlsix = document.getElementById("bowlsix");
-var usernamescore= document.querySelector(".userscore");
-var computerscore11= document.querySelector(".computerscore");
-var options = document.querySelector(".options");
+var bat = document.getElementById("bat");
+var bowl = document.getElementById("bowl");
+var batpic = document.getElementById("batpic");
+var bowlpic = document.getElementById("bowlpic");
+var userscore = document.getElementById("userscore");
+var computerscore = document.getElementById("computerscore");
+var userchoice = document.getElementById("userchoice");
+var computerchoice = document.getElementById("computerchoice");
+var userwins = document.getElementById("userwins");
+var computerwins = document.getElementById("computerwins");
 
-alert("Welcome to Hand-Cricket Game! The game flow will be as follows: First the user will bat and he choice the any number from 1 to 6, if he chooses the same number as computer then he will be out! After the user is out, user will have to bowl and if he chooses the same number as computer then computer will be out! Finally see the scoreboard to see who WON the game!");
+var sum = 0;
+var bowlsum = 0;
 
+//selecting to bat
+ bat.addEventListener("click", function bat(){
+    console.log("You choose to bat first");
+     console.log("User is batting");
+     document.getElementById("bat").style.backgroundColor =  "#e60000";
+     batting();
+ });
+
+
+// batting event happens in this function
+function batting(){
+           
+     batone.addEventListener("click", function(){
+    batone.style.backgroundColor = "#e60000";
+    colorchange();
+    console.log("one is pressed");
+        var u = 1;
+        var c = computer();
+        calculation(u,c);        
+});
+    battwo.addEventListener("click", function(){
+    console.log("two is pressed");
+    battwo.style.backgroundColor = "#e60000";
+    colorchange();    
+        var u = 2;
+        var c = computer();
+       calculation(u,c);
+});
+    batthree.addEventListener("click", function(){
+    console.log("three is pressed");
+        batthree.style.backgroundColor = "#e60000";
+    colorchange();
+        var u = 3;
+        var c = computer();
+         calculation(u,c);
+});
+    batfour.addEventListener("click", function(){
+    console.log("four is pressed");
+        batfour.style.backgroundColor = "#e60000";
+    colorchange();
+        var u = 4;
+        var c = computer();
+         calculation(u,c);
+});
+    batfive.addEventListener("click", function(){
+    console.log("five is pressed");
+        batfive.style.backgroundColor = "#e60000";
+    colorchange();
+        var u = 5;
+        var c = computer();
+         calculation(u,c);
+});
+    batsix.addEventListener("click", function(){
+    console.log("six is pressed");
+        batsix.style.backgroundColor = "#e60000";
+    colorchange();
+        var u = 6;
+        var c = computer();
+        calculation(u,c);
+});       
+}
+ 
+//bowling events take place here     
+function bowling(batsum){
+    
+var batsum1 = batsum;    
+     console.log("Computer is batting");
+    
+bowlone.addEventListener("click", function(){
+    console.log("one is pressed");
+        var bu = 1;
+        var c = computer();
+        bowlcalculation(bu,c,batsum1);
+});
+    bowltwo.addEventListener("click", function(){
+    console.log("two is pressed");
+        var bu = 2;
+        var c = computer();
+        bowlcalculation(bu,c,batsum1);
+});
+    bowlthree.addEventListener("click", function(){
+    console.log("three is pressed");
+        var bu = 3;
+        var c = computer();
+        bowlcalculation(bu,c,batsum1);
+});
+    bowlfour.addEventListener("click", function(){
+    console.log("four is pressed");
+        var bu = 4;
+        var c = computer();
+        bowlcalculation(bu,c,batsum1);
+});
+    bowlfive.addEventListener("click", function(){
+    console.log("five is pressed");
+        var bu = 5;
+        var c = computer();
+        bowlcalculation(bu,c,batsum1);
+});
+    bowlsix.addEventListener("click", function(){
+    console.log("six is pressed");
+        var bu = 6;
+        var c = computer();
+        bowlcalculation(bu,c,batsum1);
+});
+    return batsum1;
+}
+
+
+//computer generates a random number
 function computer()
 {
-var choice = ["1","2","3","4","5","6"];
-var random = Math.floor(Math.random() * 6); 
-    return choice[random];
+var min=1; 
+var max=6;  
+var random = Math.random() * (+max - +min) + +min;  
+var round = Math.round(random);
+console.log(round);
+return round;
 }
 
-
-
-batting.addEventListener('click',function(){
-    bat();
-    alert("Right now you are batting, select the number beside the bat icon!");
-    console.log("Right now you are batting");
-})
-
-function bat(){
-one.addEventListener('click',function(){
-    batgame("1");
-    console.log("pressed button 1");
-})
-
-two.addEventListener('click',function(){
-    batgame("2");
-    console.log("pressed button 2");
-})
-
-three.addEventListener('click',function(){
-    batgame("3");
-    console.log("pressed button 3");
-})
-    
-four.addEventListener('click',function(){
-    batgame("4");
-})
-    
-five.addEventListener('click',function(){
-    batgame("5");
-})
-    
-six.addEventListener('click',function(){
-    batgame("6");
-})
-}
-
-function batgame(userchoice)
-{   
-    console.log("Batting user scores  " +userchoice);
-    
-    var computerchoice = computer();
-    console.log("Batting computer scores " +computerchoice);
-    switch( userchoice + computerchoice)
-        {
-                case "12":
-                case "13":
-                case "14":
-                case "15":
-                case "16":
-                run( userchoice , computerchoice);
-                break;
-                case "21":
-                case "23":
-                case "24":
-                case "25":
-                case "26":
-                run( userchoice , computerchoice);
-                break;
-                case "31":
-                case "32":
-                case "34":
-                case "35":
-                case "36":
-                run( userchoice , computerchoice);
-                break;
-                case "41":
-                case "42":
-                case "43":
-                case "45":
-                case "46":
-                run( userchoice , computerchoice);
-                break;
-                case "51":
-                case "52":
-                case "53":
-                case "54":
-                case "56":
-                run( userchoice , computerchoice);
-                break;
-                case "61":
-                case "62":
-                case "63":
-                case "64":
-                case "65":
-                run( userchoice , computerchoice);
-                break;
-                case "11":
-                case "22":
-                case "33":
-                case "44":
-                case "55":
-                case "66":
-                out( userchoice , computerchoice);
-                break;
-                
-        }
-}
-
-function run(userchoice, computerchoice)
-{   
-    var run = parseInt(userchoice);
-    userscore = userscore + run;
-    options.innerHTML = "User choose the number " + userchoice + " and computer choose the number " + computerchoice;
-    return userscore;
-}
-
-function out(userchoice,computerchoice)
+//calculating the user score 
+function calculation(u,c)
 {
-    var userscore = run(userchoice,computerchoice);
-    console.log("out");
-    var runout = parseInt(userchoice);
-    var score = userscore - runout;
-    console.log(score);
-    usernamescore.innerHTML = score;
-    options.innerHTML = "User finally score is " + score;
-    alert("User is OUT! Batting over, time to bowl!");
-    return score;
+    if( u != c){
+        userchoice.innerHTML = u;
+        computerchoice.innerHTML = c;
+        sum = sum + u;
+        userscore.innerHTML = sum;
+        console.log("score is "+sum);}
+        else {alert("You are out");
+             console.log("Your final score is "+sum);
+              bat.style.visibility = "hidden";
+              batpic.style.visibility = "hidden";
+              batone.style.visibility = "hidden";
+              battwo.style.visibility = "hidden";
+              batthree.style.visibility = "hidden";
+              batfour.style.visibility = "hidden";
+              batfive.style.visibility = "hidden";
+              batsix.style.visibility = "hidden";
+              bowl.style.visibility = "visible";
+              bowl.style.backgroundColor = "#e60000";
+              bowling(sum);
+             }
 }
 
-
-////////////////////////////////////////////////////////////////////
-
-
-bowling.addEventListener('click',function(){
-    alert("Right now you are bowling, select the number beside the ball icon!");
-    console.log("Right now you are bowling, select the number beside the ball icon!");
-    userbowl();
-})
-
-function userbowl(){
-bowlone.addEventListener('click',function(){
-    bowlgame("1");
-    console.log("pressed button 1 of bowling");
-})
-
-bowltwo.addEventListener('click',function(){
-    bowlgame("2");
-    console.log("pressed button 2");
-})
-
-bowlthree.addEventListener('click',function(){
-    bowlgame("3");
-    console.log("pressed button 3");
-})
-    
-bowlfour.addEventListener('click',function(){
-    bowlgame("4");
-})
-    
-bowlfive.addEventListener('click',function(){
-    bowlgame("5");
-})
-    
-bowlsix.addEventListener('click',function(){
-    bowlgame("6");
-})
-}
-
-function bowlgame(userchoice)
-{   
-    console.log("Bowling user scores  " +userchoice);
-    var computerchoice = computer();
-    console.log("Bowling computer scores" +computerchoice);
-    switch( userchoice + computerchoice)
-        {
-                case "12":
-                case "13":
-                case "14":
-                case "15":
-                case "16":
-                bowl( userchoice , computerchoice);
-                break;
-                case "21":
-                case "23":
-                case "24":
-                case "25":
-                case "26":
-                bowl( userchoice , computerchoice);
-                break;
-                case "31":
-                case "32":
-                case "34":
-                case "35":
-                case "36":
-                bowl( userchoice , computerchoice);
-                break;
-                case "41":
-                case "42":
-                case "43":
-                case "45":
-                case "46":
-                bowl( userchoice , computerchoice);
-                break;
-                case "51":
-                case "52":
-                case "53":
-                case "54":
-                case "56":
-                bowl( userchoice , computerchoice);
-                break;
-                case "61":
-                case "62":
-                case "63":
-                case "64":
-                case "65":
-                bowl( userchoice , computerchoice);
-                break;
-                case "11":
-                case "22":
-                case "33":
-                case "44":
-                case "55":
-                case "66":
-                computerout( userchoice , computerchoice);
-                break;
-        }
-}
-
-function bowl(userchoice, computerchoice)
-{   
-    var run = parseInt(computerchoice);
-    computerscore = computerscore + run;
-    options.innerHTML = "Computer choose the number " + computerchoice + " and user choose the number " + userchoice;
-    return computerscore;
-}
-
-function computerout(userchoice,computerchoice)
+//calculating the computer score
+function bowlcalculation(bu,c,batsum1)
 {
-    var computerscore = bowl(userchoice,computerchoice);
-    console.log("out");
-    var runout = parseInt(computerchoice);
-    var score = computerscore - runout;
-    console.log(score);
-    computerscore11.innerHTML = score;
-    options.innerHTML = "Computer final score is " + score;
-    alert("Computer is OUT! Game over, check the score to see who won the match!");
-    return score;    
+    var batsum = batsum1;
+    if( bu != c){
+        userchoice.innerHTML = bu;
+        computerchoice.innerHTML = c;
+        bowlsum = bowlsum + bu;
+        computerscore.innerHTML = bowlsum;
+        console.log("score is "+bowlsum);
+        instantcheck(batsum,bowlsum);
+      }
+        else {alert("Computer is out");
+             console.log("Computer final score is "+bowlsum);
+              console.log("User wins");
+              userwins.style.visibility= "visible";
+              bowl.style.visibility = "hidden";
+              bowlpic.style.visibility = "hidden";
+              bowlone.style.visibility = "hidden";
+              bowltwo.style.visibility = "hidden";
+              bowlthree.style.visibility = "hidden";
+              bowlfour.style.visibility = "hidden";
+              bowlfive.style.visibility = "hidden";
+              bowlsix.style.visibility = "hidden";
+             }
 }
 
-result.addEventListener('click',function(){
-    result1();
-    console.log("showing results");
-})
-
-function result1()
-{   
-    var finaluser =  out() ;
-    console.log(finaluser);
-    var finalcomputer =  computerout();
-    console.log(finalcomputer);
-    computerscore11.innerHTML = finaluser;
-    usernamescore.innerHTML = finalcomputer;
-    console.log("userscore is" +userscore);
+function instantcheck(batsum,bowlsum)
+{
+    var batsum1 = batsum;
+    console.log("bat score "+batsum1)
+    var bowlsum1 = bowlsum;
+    console.log("bowl score is "+bowlsum1)
+    if(bowlsum1>batsum1){
+                console.log("computer winssssssssssssss");  
+        bowl.style.visibility = "hidden";
+              bowlpic.style.visibility = "hidden";
+              bowlone.style.visibility = "hidden";
+              bowltwo.style.visibility = "hidden";
+              bowlthree.style.visibility = "hidden";
+              bowlfour.style.visibility = "hidden";
+              bowlfive.style.visibility = "hidden";
+              bowlsix.style.visibility = "hidden";
+         computerwins.style.visibility= "visible";
+            }
+    else{console.log("continue");}
     
-    if (finalcomputer > finaluser)
-    {
-        options.innerHTML = "Computer wins";
-        console.log("computer wins");
-    }
-    else if(finaluser>finalcomputer){
-        options.innerHTML = "User wins";
-console.log("user wins");
-    }
-    else{
-        options.innerHTML = "Its a Draw";
-    }
 }
 
+function colorchange()
+{
+    setTimeout(function(){
+         batone.style.backgroundColor = "#660000";
+        battwo.style.backgroundColor = "#660000";
+        batthree.style.backgroundColor = "#660000";
+        batfour.style.backgroundColor = "#660000";
+        batfive.style.backgroundColor = "#660000";
+        batsix.style.backgroundColor = "#660000";
+    }, 200);
+}
