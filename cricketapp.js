@@ -175,7 +175,7 @@ function bowlcalculation(bu,c,batsum1)
     if( bu != c){
         userchoice.innerHTML = bu;
         computerchoice.innerHTML = c;
-        bowlsum = bowlsum + bu;
+        bowlsum = bowlsum + c;
         computerscore.innerHTML = bowlsum;
         console.log("score is "+bowlsum);
         instantcheck(batsum,bowlsum);
