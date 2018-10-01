@@ -85,11 +85,43 @@ body
    
 }
 
-.imagetable
+#userwins
+{
+    font-size: 50px;
+    border: solid #e18942 2px;
+    text-align: center;
+    width: 30%;
+   margin-right: 30px;
+    margin-left: 160px;
+    color: #eecd86;
+    visibility: hidden;
+    display: inline-block;
+}
+#computerwins
+{
+    font-size: 50px;
+    border: solid #e18942 2px;
+    text-align: center;
+    width: 30%;
+   margin-right: 30px;
+    margin-left: 160px;
+    color: #eecd86;
+    visibility: hidden;
+    display: inline-block;
+}
+
+#imagetable
 {
     text-align: center;
     padding-bottom: 30px;
 }
+
+.imagetable1
+{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
 
 .images
 {
@@ -143,5 +175,6 @@ body
     margin: 20px auto;
     color: #D4B99B;
     background-color: #000c33;
+    visibility: hidden;
     
 }
